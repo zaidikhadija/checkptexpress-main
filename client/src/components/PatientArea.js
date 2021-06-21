@@ -1,11 +1,11 @@
 import React from 'react';
 import './PatientArea.css';
-import ModalPatient from "./ModalPatient"
-
 import {
   Card, CardImg,  CardBody,
   CardTitle, CardSubtitle, Button
 } from 'reactstrap';
+import RegisterModalPatient from './auth/RegistreModalPatient';
+import LoginModalPatient from './auth/LoginModalPatient'
 
 const PatientArea= () =>{
     return(
@@ -39,8 +39,7 @@ const PatientArea= () =>{
               id="number"
               name="number"
               placeholder="Your password"
-            />
-            <Button color="warning">Register</Button>
+            />< RegisterModalPatient/>
           </form>
         </div>
         <div>
@@ -49,10 +48,12 @@ const PatientArea= () =>{
         <CardBody>
           <CardTitle tag="h5">Already have an account</CardTitle>
           <CardSubtitle tag="h6" className="mb-2 text-muted">Click down to sign-in</CardSubtitle>
-          <Button color="warning">sign-in</Button>
-          <ModalPatient />
+          <LoginModalPatient />
+          
         </CardBody>
+        
       </Card>
+      
     </div>
       </div>
     

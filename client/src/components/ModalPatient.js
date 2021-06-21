@@ -14,7 +14,7 @@ const ModalPatient =()=>{
 
   return (
     <div>
-        
+        <Button color="warning" onClick={toggle}>Register  </Button>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Modal title</ModalHeader>
         <ModalBody>
