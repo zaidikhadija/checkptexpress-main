@@ -23,6 +23,16 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  role:{
+    type:String,
+    required:true,
+    enum:["admin","user","isDoctor"],
+    default:"user",
+},
+MedicalFiles:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref: "MedicalFile"
+}],
 });
 
 module.exports = User = mongoose.model('User', userSchema);

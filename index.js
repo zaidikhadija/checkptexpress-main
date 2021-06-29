@@ -3,10 +3,12 @@ const express = require('express');
 
 // Require connectDB
 const connectDB = require('./config/connectDB');
+const cors=require("cors")
 
 // Require the router
-// const authRouter = require('./routes/auth');
-const userRoutes=require('./routes/api/userRoutes')
+
+const authRouter= require('./routes/api/auth');
+const medicalFileRouter=require('./routes/api/medicalFile');
 
 
 // Init express
@@ -14,13 +16,17 @@ const app = express();
 
 // Middleware ==> Parse The Data To json
 app.use(express.json());
+app.use(cors())
 
 // connectDB
 connectDB();
 
 // Use routes
 //app.use('/api/auth', authRouter);
-app.use('/api/users',userRoutes)
+app.use('/api/auth',authRouter)
+app.use('/api/medicalFile',medicalFileRouter)
+// app.use('/api/authDoctor',authDoctor);
+// app.use('/api/ProfileDoctor',ProfileDoctor);
 
 // Create port
 const port = process.env.PORT || 5000;
@@ -36,3 +42,6 @@ app.listen(port, (error) =>
 
  // "client": "npm start --prefix client",
  // "dev": "concurrently \"npm run server\"\"npm run client\""
+ // const medicalFileRouter=require('./routes/api/medicalFile');
+// const authDoctor=require('./routes/api/authDoctor');
+// const ProfileDoctor=require('./routes/api/ProfileDoctor');

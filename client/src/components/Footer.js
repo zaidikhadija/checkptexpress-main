@@ -37,13 +37,13 @@ const Fooooter=()=>{
 					</ul>
 				</div>
                 <div>
-<div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+<div class="social"><a href="icon"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
             <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Home</a></li>
-                <li class="list-inline-item"><a href="#">Services</a></li>
-                <li class="list-inline-item"><a href="#">About</a></li>
-                <li class="list-inline-item"><a href="#">Questions</a></li>
-                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                <li class="list-inline-item"><a href="homeOne">Home</a></li>
+                <li class="list-inline-item"><a href="homeTwo">Services</a></li>
+                <li class="list-inline-item"><a href="homeThree">About</a></li>
+                <li class="list-inline-item"><a href="homeFour">Questions</a></li>
+                <li class="list-inline-item"><a href="homeFive">Privacy Policy</a></li>
             </ul>
             <p class="copyright">Company:Zaidi and Kouki For Coding  © 2021</p>
 </div>

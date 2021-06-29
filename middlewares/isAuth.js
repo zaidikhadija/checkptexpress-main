@@ -1,29 +1,35 @@
-//require json web token
-const jwt= require('jsonwebtoken');
-//require the user schema
-const User=require('../models/User')
+// require Json web token
+const jwt = require('jsonwebtoken');
 
-//declaration of middleware isAuth
-const isAuth=async(req,res,next)=>{
-try {
-    const token =req.headers['x-auth-token']
-    //check for token 
-    if(!token ){
-        return res.status(401).send({msg:'No token authorization denied'})
+// Require the user Schema
+const User = require('../models/User');
+
+const isAuth = async (req, res, next) => {
+  try {
+    const token = req.headers['x-auth'];
+
+    // Check for token
+    if (!token)
+      return res.status(401).send({ msg: 'No Token, authorization denied' });
+
+    // Verify Token
+    const decoded = await jwt.verify(token, process.env.secretOrKey);
+
+    // Add User from payload
+    const user = await User.findById(decoded.id);
+
+    //Check for user
+    if (!user) {
+      return res.status(401).send({ msg: 'authorization denied' });
     }
 
-    //decoded token
-    const decoded=await jwt.verify(token,process.env.SecretOrKey)
-    //add user from payload
-    const user=await User.findById(decoded.id)
-    //check for user
-    if(!user){
-        return res.status(401).send({msg:'No token authorization denied'})
-    }
-    req.user=user
-    next()
-} catch (error){return res.status(400).send({msg:"Token is not valid"})
-}
+    // Create user
+    req.user = user;
 
-}
-module.exports=isAuth;
+    next();
+  } catch (error) {
+    return res.status(400).json({ msg: 'Token is not valid' });
+  }
+};
+
+module.exports = isAuth;

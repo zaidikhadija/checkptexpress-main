@@ -1,7 +1,7 @@
 import React from 'react';
 import './Main.css';
 import {Card,CardBody,CardTitle,CardText} from'reactstrap';
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const Homepage = () =>{
     return(

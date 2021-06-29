@@ -30,7 +30,7 @@ const LoginModalPatient = () => {
 
   const handleLogin = () => {
     dispatch(loginUser({ email, password }));
-    history.push("/Information");
+    history.push("/Files");
     setEmail('');
     setPassword('');
   };
@@ -75,6 +75,10 @@ const LoginModalPatient = () => {
           </Form>
         </ModalBody>
       </Modal>
+      <Form>
+    {/* <Link to="/Files" ></Link> */}
+    </Form>
+
     </div>
   );
 };

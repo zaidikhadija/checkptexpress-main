@@ -2,10 +2,11 @@ import React from 'react';
 import './PatientArea.css';
 import {
   Card, CardImg,  CardBody,
-  CardTitle, CardSubtitle, Button
+  CardTitle, CardSubtitle, 
 } from 'reactstrap';
 import RegisterModalPatient from './auth/RegistreModalPatient';
 import LoginModalPatient from './auth/LoginModalPatient'
+
 
 const PatientArea= () =>{
     return(

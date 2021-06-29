@@ -27,12 +27,14 @@ const RegisterModalPatient = () => {
   }; 
 
   const dispatch = useDispatch();
-//   const history = useHistory();
+  const history = useHistory();
 
   const handleRegister = () => {
     const newUser = { name, lastName, email, password };
     dispatch(registerUser(newUser));
-    // history.push("/");
+    history.push("/Dashboard_patient");
+    
+
     setEmail('');
     setName('');
     setLastName('');
