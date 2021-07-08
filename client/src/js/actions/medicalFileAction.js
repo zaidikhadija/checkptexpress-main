@@ -135,7 +135,7 @@ export const editmedicalFile = (idMedicalfile,editedMedicalfile) => async (dispa
       payload: res.data,//{ msg: "medicalFile created", medicalfile, user });
 
     });
-  
+    dispatch(getMedicalFile());
   } catch (error) {
     console.log(error);}};
     // console.log(error);

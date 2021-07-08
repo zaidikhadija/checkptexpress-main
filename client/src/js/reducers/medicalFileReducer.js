@@ -1,5 +1,5 @@
 
-import { POST_MEDICALFILES,AUTH_ERRORS,USER_LOADING,GET_MEDICALFILES,DELETE_MEDICALFILE} from "../constants/fileactionTypes";
+import { POST_MEDICALFILES,AUTH_ERRORS,USER_LOADING,GET_MEDICALFILES,DELETE_MEDICALFILE, EDIT_MEDICALFILES} from "../constants/fileactionTypes";
 
 
 const initialState = {
@@ -27,6 +27,7 @@ const initialState = {
             ...payload,
           };
           case GET_MEDICALFILES:
+            case EDIT_MEDICALFILES:
             return {
               ...state,
               isLoading: false,

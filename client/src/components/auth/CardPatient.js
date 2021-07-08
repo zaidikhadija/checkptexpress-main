@@ -6,6 +6,7 @@ import { Card, Button, CardTitle, CardText } from 'reactstrap';
 import {useDispatch} from "react-redux"
 import { deletemedicalFile} from '../../js/actions/medicalFileAction';
 import  './CardPatient.css';
+import EditModalQuest from "./EditModalQuest";
 
 
 const CardPatient = ({medicalFile}) => {
@@ -37,7 +38,7 @@ const CardPatient = ({medicalFile}) => {
           <CardText>{medicalFile.bloodType} </CardText>
          <div style={{display:"flex",justifyContent:"space-around"}} >
          <Button  color="danger" onClick={()=>delett(medicalFile._id) }> delete </Button>
-        <Button  color="warning"   >edit </Button> 
+        <EditModalQuest  medicalFile={medicalFile} />
          
             
           </div>

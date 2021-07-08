@@ -1,35 +1,38 @@
 import React,{useState} from "react";
 import {useDispatch} from "react-redux";
-import {Link} from "react-router-dom"
-import {
-  Card, CardImg,  CardBody,Input,FormGroup,Label,Form,
-  CardTitle, CardSubtitle, Button
-} from 'reactstrap';
-import { createFile } from "../js/actions/medicalFileAction";
-import "./Questionnaire.css";
+// import {Link} from "react-router-dom"
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter,Form, FormGroup, Label, Input } from 'reactstrap';
+import { editmedicalFile } from "../../js/actions/medicalFileAction";
+import "../Questionnaire.css";
 
 
-const AddMedicalFile = () => {
-    const [weight,setWeight]=useState("")
-    const [ medicalHistory,setMedicalHistory]=useState("")
-    const [allergiesName,setAllergiesName]=useState("")
-    const [bloodType,setBloodType]=useState("")
-    const dispatch=useDispatch();
-
-    
-    // const history = useHistory();
-  
-    const addd = () => {
-      const newFile= { weight, medicalHistory, allergiesName, bloodType};
-      dispatch(createFile(newFile));
-      // history.push("/Dashboard_patient");
-    setWeight('');
-    setMedicalHistory('');
-    setAllergiesName('');
-    setBloodType('');
-    };
-
+const EditMedicalFile = ({medicalFile}) => {
+    const [weight,setWeight]=useState(medicalFile.weight)
+    const [medicalHistory,setMedicalHistory]=useState(medicalFile.medicalHistory)
+    const [allergiesName,setAllergiesName]=useState(medicalFile.allergiesName)
+    const [bloodType,setBloodType]=useState(medicalFile.bloodType);
    
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => {
+      setModal(!modal)
+      setWeight(medicalFile.weight)
+      setMedicalHistory(medicalFile.medicalHistory)
+      setAllergiesName(medicalFile.allergiesName)
+      setBloodType(medicalFile.bloodType)
+    };
+  const dispatch=useDispatch()
+
+  const edit=()=>{
+    dispatch(editmedicalFile(medicalFile._id,{ weight, medicalHistory, allergiesName, bloodType}))
+    toggle()
+  }
+//   setWeight('');
+//   setMedicalHistory('');
+//   setAllergiesName('');
+//   setBloodType('');
+  
+
   return (
     <div className="container">
     <div class="contact-container">
@@ -37,9 +40,11 @@ const AddMedicalFile = () => {
        <div className="component">
        
     <div>
-    <h3>Our patient's medical file</h3>
-   
-    <Form>
+    <Button color="warning" onClick={toggle}>edit</Button>
+    <Modal isOpen={modal} toggle={toggle}>
+        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        <ModalBody>
+        <Form>
       <FormGroup>
         <Label for="examplePassword">Weight</Label>
         <Input
@@ -85,11 +90,26 @@ const AddMedicalFile = () => {
           placeholder="with a placeholder"
         />
       </FormGroup>
-      <Button color="warning" onClick={addd}>save</Button>
-    </Form>
+      
+      </Form>     
+       </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={edit}>Edit modal</Button>{' '}
+          <Button color="secondary" onClick={toggle}>Cancel</Button>
+        </ModalFooter>
+      </Modal>
+      </div>
+      </div>
+      </div>
+      </div>
+
+      )
+      };
     
-     </div></div>
-     <div>
+
+
+export default EditMedicalFile;
+ {/* <div>
       <Card className="Questionnaire">
       <CardImg top width="30%" src="https://png.pngtree.com/element_our/20190603/ourlarge/pngtree-medical-supplies-medical-record-image_1456372.jpg"  alt="imgdossie" />
       <CardBody>
@@ -103,11 +123,7 @@ const AddMedicalFile = () => {
       </div>
      </div></div>
    
-      // </div>
-  );
-};
-
-
-export default AddMedicalFile ;
+      // </div> */}
+  
 
 
