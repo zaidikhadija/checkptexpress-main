@@ -36,11 +36,9 @@ const CardPatient = ({medicalFile}) => {
           <CardText>{medicalFile.medicalHistory}</CardText>
           <CardText>{medicalFile.allergiesName}</CardText>
           <CardText>{medicalFile.bloodType} </CardText>
-         <div style={{display:"flex",justifyContent:"space-around"}} >
+          <div style={{display:"flex",justifyContent:"space-around"}} >
          <Button  color="danger" onClick={()=>delett(medicalFile._id) }> delete </Button>
         <EditModalQuest  medicalFile={medicalFile} />
-         
-            
           </div>
         </Card>
         </div>

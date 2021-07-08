@@ -1,10 +1,10 @@
 .contact-container{
   margin-top: 7rem;
   display: flex;
-  height: 100vh;
+  height: 200vh;
 }
 .right-col {
-  height: 100vh;
+  height: 300vh;
   padding: 5rem 0;
   margin-left: auto;
   margin-right: auto;
