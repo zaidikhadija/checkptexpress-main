@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 import {
   Button,
@@ -27,12 +27,12 @@ const RegisterModalPatient = () => {
   }; 
 
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleRegister = () => {
     const newUser = { name, lastName, email, password };
     dispatch(registerUser(newUser));
-    history.push("/Dashboard_patient");
+    // history.push("/Dashboard_patient");
     
 
     setEmail('');

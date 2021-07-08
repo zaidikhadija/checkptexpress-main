@@ -12,22 +12,22 @@ router.post("/newFile",isAuth,medicalFileController.createFile)
 // http://localhost:5000/api/medicalFile
 // get  files
 // 
-router.get("/",isAuth,medicalFileController. getfiles)
+router.get("/",isAuth,medicalFileController. getMedicalFile)
 
 // http://localhost:5000/api/medicalFile:id
 // get a medicalFile by id
 // 
-router.get("/:id",isAuth,medicalFileController.getProfileById)
+router.get("/:id",isAuth,medicalFileController.getfileById)
 
-//http://localhost:5000/api/medicalFile/deletemedicalFile/:idUser/:idmedicalFile
+//http://localhost:5000/api/medicalFile/deletemedicalFile/:idmedicalFile
 // delete medicalFile
 // 
-router.delete("/deletemedicalFile/:idUser/:idmedicalFile",isAuth,medicalFileController.deletemedicalFile)
+router.delete("/deletemedicalFile/:id",isAuth,medicalFileController.deletemedicalFile)
 
-// // http://localhost:5000/api/medicalFile/editmedicalFile/:id
+// // http://localhost:5000/api/medicalFile/editMedicalfile/:id
 // // edit medicalFile
 // // 
-router.put("/editmedicalFile/:id",isAuth,medicalFileController.editmedicalFile)
+router.put("/editMedicalfile/:id",isAuth,medicalFileController.editmedicalFile)
 
 
 module.exports=router

@@ -23,13 +23,17 @@ const authLinks = (
   <div classNameName="home">
       <nav className="nav">
       <div className="container">
-      <div style={{display:"flex-end"}}>
-          </div><Link to="/Dashboard_patient">
-          <li><a href="/Dashboard_patient"  onClick={logoutUser}>Logout *** Back </a></li></Link>
-        
-          </div>
+       <div style={{display:"flex-end"}}> </div>
+           <Link to="/Questionnaire" >
+          <li><a   href="/Questionnaire"  onClick={logoutUser}>Logout/Go Back  </a></li></Link> 
           <Link to="/Files">
-          <li><a href="/Files">Files </a></li></Link>
+          <li><a href="/Files"> </a></li></Link>
+          <Link to="/medicalFile" ><li><a href="/medicalFile"> </a></li> </Link>
+          <Link to="/Dashboard_patient">
+          <li><a href="/Dashboard_patient"> </a></li></Link>
+          {/* <Link to="/medicalFile" ><li><a href="/medicaleFile"> </a></li> </Link> */} 
+         
+          </div>
     </nav>
     </div>)
 

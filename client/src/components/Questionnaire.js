@@ -2,8 +2,12 @@ import React,{useState} from "react";
 // import { useHistory } from 'react-router-dom';
 import {useDispatch} from "react-redux";
 import {Link} from "react-router-dom"
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import {
+  Card, CardImg,  CardBody,Input,FormGroup,Label,Form,
+  CardTitle, CardSubtitle, Button
+} from 'reactstrap';
 import { createFile } from "../js/actions/medicalFileAction";
+import "./Questionnaire.css";
 // const FileList = () => {
 //     const dispatch=useDispatch()
 //     useEffect(()=>{
@@ -33,8 +37,14 @@ const AddMedicalFile = () => {
 
    
   return (
-    <div className="home">
     <div className="container">
+    <div class="contact-container">
+       {/* <div class="right-col"> */}
+       <div className="component">
+       
+    <div>
+    <h3>Our patient's medical file</h3>
+   
     <Form>
       <FormGroup>
         <Label for="examplePassword">Weight</Label>
@@ -42,8 +52,8 @@ const AddMedicalFile = () => {
         value={weight}
         onChange={e=>setWeight(e.target.value)}
           type="text"
-          name="password"
-          id="examplePassword"
+          name="weight"
+          id="exampleweight"
           placeholder="password placeholder"
         />
       </FormGroup>
@@ -52,9 +62,9 @@ const AddMedicalFile = () => {
         <Input
         value={ medicalHistory}
         onChange={e=>setMedicalHistory(e.target.value)}
-          type="email"
-          name="email"
-          id="exampleEmail"
+          type="text"
+          name="medicalHistory"
+          id="examplemedicalHistory"
           placeholder="with a placeholder"
         />
       </FormGroup>
@@ -66,27 +76,44 @@ const AddMedicalFile = () => {
         onChange={e=>setAllergiesName(e.target.value)}
           type="text"
           name="password"
-          id="examplePassword"
+          id="exampleallergiesName"
           placeholder="password placeholder"
         />
       </FormGroup>
       <FormGroup>
-        <Label for="exampleEmail"> BloodType </Label>
+        <Label for="bloodType"> BloodType </Label>
         <Input
         value={ bloodType}
         onChange={e=>setBloodType(e.target.value)}
-          type="email"
-          name="email"
-          id="exampleEmail"
+          type="text"
+          name="password"
+          id="examplebloodType"
           placeholder="with a placeholder"
         />
       </FormGroup>
-    <Link to="/Dashboard_patient" >  <Button  onClick={addd} >Questionnaire</Button></Link>
+      <Button color="warning" onClick={addd}>save</Button>
     </Form>
-    </div></div>
+    
+     </div></div>
+     <div>
+      <Card className="Questionnaire">
+      <CardImg top width="30%" src="https://png.pngtree.com/element_our/20190603/ourlarge/pngtree-medical-supplies-medical-record-image_1456372.jpg"  alt="imgdossie" />
+      <CardBody>
+        <CardTitle tag="h5">Already have a medicalFile</CardTitle>
+        <CardSubtitle tag="h6" className="mb-2 text-muted">Click down to verify your medicalFile </CardSubtitle>
+        
+        <Link to="/medicalFile" > <Button color="warning">your medicalfile</Button></Link>
+        </CardBody>
+        
+      </Card>
+      </div>
+     </div></div>
+   
+      // </div>
   );
 };
 
 
 export default AddMedicalFile ;
+
 

@@ -1,0 +1,68 @@
+/* /* .contact-container h1, Label, Button, .description {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.1rem;
+  }
+  
+  .contact-container h1 {
+    color: #e4a1ff;
+    text-transform: uppercase;
+    font-size: 4.5rem;
+    letter-spacing: 0.5rem;
+    font-weight: 400;
+    
+  } */
+.card {
+    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 350px;
+    margin: auto;
+    height:250px;
+    text-align: center;
+    font-family: arial;
+    background-color: blue;
+    border: 05px solid purple;
+    padding: 15px;
+    margin: 80px;
+    
+  } 
+  
+  h1 {
+    color: black;
+    font-size: 35px;
+    text-decoration: underline;
+  }
+  h3 {
+    color: black;
+    font-size: 20px;
+    text-decoration: 05px;
+  }
+  
+  .home-Butn {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+  
+    background-color: red;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 22px;
+  }
+  
+  a {
+    text-decoration: none;
+    font-size: 22px;
+    color: red;
+  }
+  
+  button:hover,
+  a:hover {
+    opacity: 0.7;
+  }
+  img {
+    padding: 8px;
+    border-radius: 50%;
+  }
+   

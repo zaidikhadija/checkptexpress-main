@@ -1,10 +1,10 @@
 
-import { POST_MEDICALFILES,AUTH_ERRORS,USER_LOADING,GET_MEDICALFILES} from "../constants/fileactionTypes";
+import { POST_MEDICALFILES,AUTH_ERRORS,USER_LOADING,GET_MEDICALFILES,DELETE_MEDICALFILE} from "../constants/fileactionTypes";
 
 
 const initialState = {
-    token: localStorage.getItem('token'), //null
-    medicalFile: null,
+  token: localStorage.getItem('token'),
+ 
     isAuth: true,
     isLoading: true,
     msg: null,
@@ -17,12 +17,10 @@ const initialState = {
           isLoading: true,
         };
   case POST_MEDICALFILES:
-   
-      localStorage.setItem('token', payload.token);
-      
+    //console.log(payload);
         return {
             ...state,
-
+            
             isLoading: false,
             isAuth: true,
             msg: payload.msg,//({ msg: "medicalFile created", medicalfile, user });
@@ -35,8 +33,18 @@ const initialState = {
               isAuth: true,
               ...payload,
             };
+            case DELETE_MEDICALFILE:
+            // localStorage.getItem('token');
+            
+              return{
+                ...state,
+                isLoading: false,
+                isAuth: true,
+                msg: payload.msg,
+                // ...payload,
+              }
             case AUTH_ERRORS:
-                localStorage.removeItem('token');
+              localStorage.removeItem('token');
                 return {
                   ...state,
                   token: null,

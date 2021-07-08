@@ -1,5 +1,5 @@
 import axios from "axios"
-import { POST_MEDICALFILES,AUTH_ERRORS,USER_LOADING, GET_MEDICALFILES} from "../constants/fileactionTypes";
+import { POST_MEDICALFILES,AUTH_ERRORS,USER_LOADING, GET_MEDICALFILES,EDIT_MEDICALFILES,DELETE_MEDICALFILE} from "../constants/fileactionTypes";
 //get
 
 // export const getfiles=()=> dispatch  =>{
@@ -33,16 +33,15 @@ import { POST_MEDICALFILES,AUTH_ERRORS,USER_LOADING, GET_MEDICALFILES} from "../
 // }
 
 // Get auth user
-export const getfiles = () => async (dispatch) => {
+export const getMedicalFile = () => async (dispatch) => {
     dispatch(userLoading());
   
     try {
-      //headers
       const config = {
         headers: {
           'x-auth': localStorage.getItem('token'),
-        },
-      };
+        }
+    }
       const res = await axios.get('http://localhost:5000/api/medicalFile/', config);
       dispatch({
         type: GET_MEDICALFILES,
@@ -68,34 +67,92 @@ const userLoading = () => (dispatch) => {
 export const createFile = (newFile) => async (dispatch) => {
     dispatch(userLoading());
     
-      try {
-        //headers
-        const config = {
-          headers: {
-            'x-auth': localStorage.getItem('token'),
-          },
-        };
+    try {
+      const config = {
+        headers: {
+          'x-auth': localStorage.getItem('token'),
+        }
+    }
       const res = await axios.post('http://localhost:5000/api/medicalFile/newFile', newFile,config);
+      //console.log("res1",res)
       dispatch({
         type: POST_MEDICALFILES,
         payload: res.data,//{ msg: "medicalFile created", medicalfile, user });
+
       });
     } catch (error) {
-      // console.log(error);
-      // // BA3ED
-      console.dir(error);
-      const { errors, msg } = error.response.data;
+      console.log(error);
+      dispatch({
+        type: AUTH_ERRORS,
+      });
+    }};
   
-      if (Array.isArray(errors)) {
-        errors.forEach((err) => alert(err.msg));
-      }
-      console.log(errors);
-      if (msg) {
-        alert(msg);
-      }
-  
+
+  //Delete  MedicalFile
+  export const deletemedicalFile =(medicalFileId) => async (dispatch) => {
+    // console.log(idmedicalFile);
+    dispatch(userLoading());
+    
+    try {
+      const config = {
+        headers: {
+          'x-auth': localStorage.getItem('token'),
+        }
+    }
+      const res = await axios.delete("http://localhost:5000/api/medicalFile/deletemedicalFile/"+medicalFileId ,config);
+      console.log("resOne",res)
+      console.log("idDelete",medicalFileId)
+    
+      dispatch({
+      
+        type: DELETE_MEDICALFILE,
+        payload: res.data, 
+       
+      });
+      dispatch(getMedicalFile());
+
+    } catch (error) {
+      console.log(error);
       dispatch({
         type: AUTH_ERRORS,
       });
     }
   };
+  
+//Edit medicalFile
+export const editmedicalFile = (idMedicalfile,editedMedicalfile) => async (dispatch) => {
+  dispatch(userLoading());
+  try {
+    const config = {
+      headers: {
+        'x-auth': localStorage.getItem('token'),
+      }
+  }
+    const res = await axios.put("http://localhost:5000/api/medicalFile/editMedicalfile/"+idMedicalfile,editedMedicalfile,config);
+    
+    dispatch({
+      type: EDIT_MEDICALFILES,
+      payload: res.data,//{ msg: "medicalFile created", medicalfile, user });
+
+    });
+  
+  } catch (error) {
+    console.log(error);}};
+    // console.log(error);
+    // // BA3ED
+//     console.dir(error);
+//     const { errors, msg } = error.response.data;
+
+//     if (Array.isArray(errors)) {
+//       errors.forEach((err) => alert(err.msg));
+//     }
+//     console.log(errors);
+//     if (msg) {
+//       alert(msg);
+//     }
+
+//     dispatch({
+//       type: AUTH_ERRORS,
+//     });
+//   }
+// };
